@@ -7,9 +7,9 @@ import { registerAction } from '../../store/actions/register.actions';
 import {
   isSubmittingSelector,
   validationErrorsSelector,
-} from '../../store/selectors/authFeature.selectors';
-import { RegisterRequestInterface } from '../../types/registerRequest.interface';
-import { BackendErrorsInterface } from 'src/app/shared/types/backendErrors.interface';
+} from '../../store/selectors/auth-feature.selectors';
+import { RegisterRequestInterface } from '../../types/register-request.interface';
+import { BackendErrorsInterface } from 'src/app/shared/types/backend-errors.interface';
 
 @Component({
   selector: 'mc-register',

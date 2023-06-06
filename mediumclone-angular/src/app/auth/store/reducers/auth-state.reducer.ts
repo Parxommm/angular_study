@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { AuthStateInterface } from '../../types/authState.interface';
+import { AuthStateInterface } from '../../types/auth-state.interface';
 import {
   registerAction,
   registerFailureAction,
@@ -13,7 +13,7 @@ const initialState: AuthStateInterface = {
   validationErrors: null,
 };
 
-const authReducer = createReducer(
+const authStateReducer = createReducer(
   initialState,
   on(
     registerAction,
@@ -42,4 +42,4 @@ const authReducer = createReducer(
   )
 );
 
-export { authReducer };
+export { authStateReducer };

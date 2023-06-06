@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { RegisterRequestInterface } from '../types/registerRequest.interface';
-import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface';
+import { RegisterRequestInterface } from '../types/register-request.interface';
+import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
 import { environment } from 'src/environments/environment.development';
-import { AuthResponseInterface } from '../types/authResponseInterface';
+import { AuthResponseInterface } from '../types/auth-response.interface';
 
 @Injectable()
 export class AuthService {

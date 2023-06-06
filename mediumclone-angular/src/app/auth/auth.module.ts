@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import { RegisterComponent } from './components/register/register.component';
-import { authReducer } from './store/reducers/authState.reducer';
+import { authStateReducer } from './store/reducers/auth-state.reducer';
 import { AuthService } from './services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from './store/effects/register.effects';
@@ -25,7 +25,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    StoreModule.forFeature('authState', authReducer),
+    StoreModule.forFeature('authState', authStateReducer),
     EffectsModule.forFeature([RegisterEffect]),
     BackendErrorsMessagesModule,
   ],
