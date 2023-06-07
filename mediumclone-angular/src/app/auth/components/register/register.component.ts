@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { registerAction } from '../../store/actions/register.actions';
+import { RegisterActions } from '../../store/actions/register.actions';
 import {
   isSubmittingSelector,
   validationErrorsSelector,
@@ -48,6 +48,6 @@ export class RegisterComponent implements OnInit {
     const request: RegisterRequestInterface = {
       user: this.form.value,
     };
-    this.store.dispatch(registerAction({ request }));
+    this.store.dispatch(RegisterActions['[Auth]Register']({ request }));
   }
 }
