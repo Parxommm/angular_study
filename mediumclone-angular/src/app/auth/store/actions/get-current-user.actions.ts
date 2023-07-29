@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';

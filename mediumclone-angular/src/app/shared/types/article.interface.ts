@@ -1,6 +1,7 @@
 import { ProfileInterface } from './profile.interface';
 
 export interface ArticleInterface {
+  author: ProfileInterface;
   title: string;
   slug: string;
   body: string;
@@ -8,7 +9,6 @@ export interface ArticleInterface {
   updatedAt: string;
   tagList: string[];
   description: string;
-  author: ProfileInterface;
   favorited: boolean;
   favoritesCount: number;
 }
