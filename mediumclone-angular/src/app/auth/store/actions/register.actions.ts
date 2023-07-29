@@ -5,10 +5,10 @@ import { CurrentUserInterface } from 'src/app/shared/types/current-user.interfac
 import { BackendErrorsInterface } from 'src/app/shared/types/backend-errors.interface';
 
 export const RegisterActions = createActionGroup({
-  source: 'Register',
+  source: 'Auth',
   events: {
-    '[Auth] Register': props<{ request: RegisterRequestInterface }>(),
-    '[Auth] Register success': props<{ currentUser: CurrentUserInterface }>(),
-    '[Auth] Register failure': props<{ errors: BackendErrorsInterface }>(),
+    'Register start': props<{ request: RegisterRequestInterface }>(),
+    'Register success': props<{ currentUser: CurrentUserInterface }>(),
+    'Register failure': props<{ errors: BackendErrorsInterface }>(),
   },
 });

@@ -3,7 +3,6 @@ import { AuthStateInterface } from '../../types/auth-state.interface';
 import { RegisterActions } from '../actions/register.actions';
 import { LoginActions } from '../actions/login.actions';
 import { GetCurrentUserActions } from '../actions/get-current-user.actions';
-import { state } from '@angular/animations';
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -17,7 +16,7 @@ const authStateReducer = createReducer(
   initialState,
   // Register
   on(
-    RegisterActions['[Auth]Register'],
+    RegisterActions.registerStart,
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
@@ -25,7 +24,7 @@ const authStateReducer = createReducer(
     })
   ),
   on(
-    RegisterActions['[Auth]RegisterSuccess'],
+    RegisterActions.registerSuccess,
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
@@ -34,7 +33,7 @@ const authStateReducer = createReducer(
     })
   ),
   on(
-    RegisterActions['[Auth]RegisterFailure'],
+    RegisterActions.registerFailure,
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
@@ -43,7 +42,7 @@ const authStateReducer = createReducer(
   ),
   // Login
   on(
-    LoginActions['[Auth]Login'],
+    LoginActions.loginStart,
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
@@ -51,7 +50,7 @@ const authStateReducer = createReducer(
     })
   ),
   on(
-    LoginActions['[Auth]LoginSuccess'],
+    LoginActions.loginSuccess,
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
@@ -60,7 +59,7 @@ const authStateReducer = createReducer(
     })
   ),
   on(
-    LoginActions['[Auth]LoginFailure'],
+    LoginActions.loginFailure,
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
@@ -69,14 +68,14 @@ const authStateReducer = createReducer(
   ),
   // get current user
   on(
-    GetCurrentUserActions['[Auth]GetCurrentUser'],
+    GetCurrentUserActions.getCurrentUser,
     (state): AuthStateInterface => ({
       ...state,
       isLoading: true,
     })
   ),
   on(
-    GetCurrentUserActions['[Auth]GetCurrentUserSuccess'],
+    GetCurrentUserActions.getCurrentUserSuccess,
     (state, action): AuthStateInterface => ({
       ...state,
       isLoading: false,
@@ -85,7 +84,7 @@ const authStateReducer = createReducer(
     })
   ),
   on(
-    GetCurrentUserActions['[Auth]GetCurrentUserFailure'],
+    GetCurrentUserActions.getCurrentUserFailure,
     (state): AuthStateInterface => ({
       ...state,
       isLoading: false,

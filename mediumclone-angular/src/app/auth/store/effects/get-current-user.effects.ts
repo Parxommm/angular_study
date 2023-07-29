@@ -17,20 +17,20 @@ export class GetCurrentUserEffect {
 
   getCurrentUser$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(GetCurrentUserActions['[Auth]GetCurrentUser']),
+      ofType(GetCurrentUserActions.getCurrentUser),
       switchMap(() => {
         const token = this.persistenceService.get('accessToken');
         if (!token) {
-          return of(GetCurrentUserActions['[Auth]GetCurrentUserFailure']());
+          return of(GetCurrentUserActions.getCurrentUserFailure);
         }
         return this.authService.getCurrentUser().pipe(
           map((currentUser: CurrentUserInterface) => {
-            return GetCurrentUserActions['[Auth]GetCurrentUserSuccess']({
+            return GetCurrentUserActions.getCurrentUserSuccess({
               currentUser,
             });
           }),
           catchError(() => {
-            return of(GetCurrentUserActions['[Auth]GetCurrentUserFailure']());
+            return of(GetCurrentUserActions.getCurrentUserFailure);
           })
         );
       })

@@ -9,6 +9,6 @@ import { GetCurrentUserActions } from './auth/store/actions/get-current-user.act
 export class AppComponent implements OnInit {
   constructor(private store: Store) {}
   ngOnInit(): void {
-    this.store.dispatch(GetCurrentUserActions['[Auth]GetCurrentUser']());
+    this.store.dispatch(GetCurrentUserActions.getCurrentUser());
   }
 }

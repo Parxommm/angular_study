@@ -20,16 +20,16 @@ export class LoginEffect {
 
   login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(LoginActions['[Auth]Login']),
+      ofType(LoginActions.loginStart),
       switchMap(({ request }) => {
         return this.authService.login(request).pipe(
           map((currentUser: CurrentUserInterface) => {
             this.persistenceService.set('accessToken', currentUser.token);
-            return LoginActions['[Auth]LoginSuccess']({ currentUser });
+            return LoginActions.loginSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) =>
             of(
-              LoginActions['[Auth]LoginFailure']({
+              LoginActions.loginFailure({
                 errors: errorResponse.error.errors,
               })
             )
@@ -42,7 +42,7 @@ export class LoginEffect {
   redirectAfterSubmit$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(LoginActions['[Auth]LoginSuccess']),
+        ofType(LoginActions.loginSuccess),
         tap(() => this.router.navigateByUrl('/'))
       ),
     { dispatch: false }

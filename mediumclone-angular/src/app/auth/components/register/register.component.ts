@@ -48,6 +48,6 @@ export class RegisterComponent implements OnInit {
     const request: RegisterRequestInterface = {
       user: this.form.value,
     };
-    this.store.dispatch(RegisterActions['[Auth]Register']({ request }));
+    this.store.dispatch(RegisterActions.registerStart({ request }));
   }
 }

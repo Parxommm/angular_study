@@ -20,16 +20,16 @@ export class RegisterEffect {
 
   register$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(RegisterActions['[Auth]Register']),
+      ofType(RegisterActions.registerStart),
       switchMap(({ request }) => {
         return this.authService.register(request).pipe(
           map((currentUser: CurrentUserInterface) => {
             this.persistenceService.set('accessToken', currentUser.token);
-            return RegisterActions['[Auth]RegisterSuccess']({ currentUser });
+            return RegisterActions.registerSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) =>
             of(
-              RegisterActions['[Auth]RegisterFailure']({
+              RegisterActions.registerFailure({
                 errors: errorResponse.error.errors,
               })
             )
@@ -42,7 +42,7 @@ export class RegisterEffect {
   redirectAfterSubmit$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(RegisterActions['[Auth]RegisterSuccess']),
+        ofType(RegisterActions.registerSuccess),
         tap(() => this.router.navigateByUrl('/'))
       ),
     { dispatch: false }

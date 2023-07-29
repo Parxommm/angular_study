@@ -5,10 +5,10 @@ import { BackendErrorsInterface } from 'src/app/shared/types/backend-errors.inte
 import { LoginRequestInterface } from '../../types/login-request.interface';
 
 export const LoginActions = createActionGroup({
-  source: 'Login',
+  source: 'Auth',
   events: {
-    '[Auth] Login': props<{ request: LoginRequestInterface }>(),
-    '[Auth] Login success': props<{ currentUser: CurrentUserInterface }>(),
-    '[Auth] Login failure': props<{ errors: BackendErrorsInterface }>(),
+    'Login start': props<{ request: LoginRequestInterface }>(),
+    'Login success': props<{ currentUser: CurrentUserInterface }>(),
+    'Login failure': props<{ errors: BackendErrorsInterface }>(),
   },
 });

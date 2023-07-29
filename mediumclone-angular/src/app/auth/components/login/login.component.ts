@@ -47,6 +47,6 @@ export class LoginComponent implements OnInit {
     const request: LoginRequestInterface = {
       user: this.form.value,
     };
-    this.store.dispatch(LoginActions['[Auth]Login']({ request }));
+    this.store.dispatch(LoginActions.loginStart({ request }));
   }
 }
