@@ -13,8 +13,8 @@ export class GetFeedEffect {
   getFeed$ = createEffect(() =>
     this.actions$.pipe(
       ofType(GetFeedActions.getFeed),
-      switchMap(({ _p }) => {
-        return this.feedService.getFeed(_p.url).pipe(
+      switchMap(({ url }) => {
+        return this.feedService.getFeed(url).pipe(
           map((feed: GetFeedResponseInterface) => {
             return GetFeedActions.getFeedSuccess({
               feed,

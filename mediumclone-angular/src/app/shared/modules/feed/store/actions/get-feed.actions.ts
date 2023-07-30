@@ -5,7 +5,7 @@ import { GetFeedResponseInterface } from '../../types/get-feed-response.interfac
 export const GetFeedActions = createActionGroup({
   source: 'Feed',
   events: {
-    'Get feed': props<{ url: string }>,
+    'Get feed': props<{ url: string }>(),
     'Get feed success': props<{
       feed: GetFeedResponseInterface;
     }>(),
