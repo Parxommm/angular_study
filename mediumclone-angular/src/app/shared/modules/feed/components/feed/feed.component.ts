@@ -3,11 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { GetFeedActions } from '../../store/actions/get-feed.actions';
 import { Observable } from 'rxjs';
 import { GetFeedResponseInterface } from '../../types/get-feed-response.interface';
-import {
-  dataSelector,
-  errorSelector,
-  isLoadingSelector,
-} from '../../store/selectors/feed.selectors';
+import { feedStateSelectors } from '../../store/selectors/feed.selectors';
 
 @Component({
   selector: 'mc-feed',
@@ -29,9 +25,11 @@ export class FeedComponent implements OnInit {
   }
 
   initializeValues(): void {
-    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-    this.error$ = this.store.pipe(select(errorSelector));
-    this.data$ = this.store.pipe(select(dataSelector));
+    this.isLoading$ = this.store.pipe(
+      select(feedStateSelectors.selectIsLoading)
+    );
+    this.error$ = this.store.pipe(select(feedStateSelectors.selectError));
+    this.data$ = this.store.pipe(select(feedStateSelectors.selectData));
   }
 
   fetchData(): void {

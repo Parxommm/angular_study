@@ -1,21 +1,11 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { feedStateFeature } from '../reducers/feed-state.reducer';
 
-import { FeedStateInterface } from '../../types/feed-state.interface';
+const { selectFeedState, selectIsLoading, selectError, selectData } =
+  feedStateFeature;
 
-export const feedFeatureSelector =
-  createFeatureSelector<FeedStateInterface>('feed');
-
-export const isLoadingSelector = createSelector(
-  feedFeatureSelector,
-  (feedState: FeedStateInterface) => feedState.isLoading
-);
-
-export const errorSelector = createSelector(
-  feedFeatureSelector,
-  (feedState: FeedStateInterface) => feedState.error
-);
-
-export const dataSelector = createSelector(
-  feedFeatureSelector,
-  (feedState: FeedStateInterface) => feedState.data
-);
+export const feedStateSelectors = {
+  selectFeedState,
+  selectIsLoading,
+  selectError,
+  selectData,
+};

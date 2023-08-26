@@ -33,7 +33,7 @@
         </li>
       </ng-container>
 
-      <ng-container *ngIf="isAnonymous$ | async">
+      <ng-container *ngIf="!(isLoggedIn$ | async)">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/login']"> Sign In </a>
         </li>

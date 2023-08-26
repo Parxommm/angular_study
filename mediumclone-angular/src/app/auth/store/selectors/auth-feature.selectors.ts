@@ -2,30 +2,18 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { AuthStateInterface } from '../../types/auth-state.interface';
 
-export const authFeatureSelector =
-  createFeatureSelector<AuthStateInterface>('authState');
+import { authStateFeature } from '../reducers/auth-state.reducer';
 
-export const isSubmittingSelector = createSelector(
-  authFeatureSelector,
-  (authState: AuthStateInterface) => authState.isSubmitting
-);
+const {
+  selectIsSubmitting,
+  selectValidationErrors,
+  selectIsLoggedIn,
+  selectCurrentUser,
+} = authStateFeature;
 
-export const validationErrorsSelector = createSelector(
-  authFeatureSelector,
-  (authState: AuthStateInterface) => authState.validationErrors
-);
-
-export const isLoggedInSelector = createSelector(
-  authFeatureSelector,
-  (authState: AuthStateInterface) => authState.isLoggedIn
-);
-
-export const isAnonymousSelector = createSelector(
-  authFeatureSelector,
-  (authState: AuthStateInterface) => authState.isLoggedIn === false
-);
-
-export const currentUserSelector = createSelector(
-  authFeatureSelector,
-  (authState: AuthStateInterface) => authState.currentUser
-);
+export const authStateSelectors = {
+  selectIsSubmitting,
+  selectValidationErrors,
+  selectIsLoggedIn,
+  selectCurrentUser,
+};
