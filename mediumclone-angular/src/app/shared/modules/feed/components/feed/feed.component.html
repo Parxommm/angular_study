@@ -1,10 +1,10 @@
 <mc-loading *ngIf="isLoading$ | async"></mc-loading>
 <mc-error-message *ngIf="error$ | async"></mc-error-message>
 
-<div *ngIf="data$ | async">
+<div *ngIf="feed$ | async">
   <div
     class="article-preview"
-    *ngFor="let article of (data$ | async)?.articles"
+    *ngFor="let article of (feed$ | async)?.articles"
   >
     <div class="article-meta">
       <a [routerLink]="['/profiles', article.author.username]">
@@ -27,5 +27,10 @@
       <span class="text-danger">HERE LIST OF TAGS</span>
     </a>
   </div>
-  <span class="text-danger">PAGINATION</span>
+  <mc-pagination
+    [total]="(feed$ | async)?.articlesCount"
+    [limit]="limit"
+    [url]="baseUrl"
+    [currentPage]="currentPage"
+  ></mc-pagination>
 </div>
