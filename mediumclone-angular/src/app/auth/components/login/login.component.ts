@@ -3,10 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import {
-  isSubmittingSelector,
-  validationErrorsSelector,
-} from '../../store/selectors/auth-feature.selectors';
+import { authStateSelectors } from '../../store/selectors/auth-feature.selectors';
 import { BackendErrorsInterface } from 'src/app/shared/types/backend-errors.interface';
 import { LoginRequestInterface } from '../../types/login-request.interface';
 import { LoginActions } from '../../store/actions/login.actions';
@@ -38,8 +35,12 @@ export class LoginComponent implements OnInit {
   }
 
   initializeValues(): void {
-    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    this.backendErrors$ = this.store.pipe(select(validationErrorsSelector));
+    this.isSubmitting$ = this.store.pipe(
+      select(authStateSelectors.selectIsSubmitting)
+    );
+    this.backendErrors$ = this.store.pipe(
+      select(authStateSelectors.selectValidationErrors)
+    );
   }
 
   onSubmit(): void {
@@ -47,6 +48,6 @@ export class LoginComponent implements OnInit {
     const request: LoginRequestInterface = {
       user: this.form.value,
     };
-    this.store.dispatch(LoginActions['[Auth]Login']({ request }));
+    this.store.dispatch(LoginActions.loginStart({ request }));
   }
 }

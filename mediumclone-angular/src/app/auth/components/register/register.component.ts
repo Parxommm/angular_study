@@ -4,10 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { RegisterActions } from '../../store/actions/register.actions';
-import {
-  isSubmittingSelector,
-  validationErrorsSelector,
-} from '../../store/selectors/auth-feature.selectors';
+import { authStateSelectors } from '../../store/selectors/auth-feature.selectors';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
 import { BackendErrorsInterface } from 'src/app/shared/types/backend-errors.interface';
 
@@ -39,8 +36,12 @@ export class RegisterComponent implements OnInit {
   }
 
   initializeValues(): void {
-    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    this.backendErrors$ = this.store.pipe(select(validationErrorsSelector));
+    this.isSubmitting$ = this.store.pipe(
+      select(authStateSelectors.selectIsSubmitting)
+    );
+    this.backendErrors$ = this.store.pipe(
+      select(authStateSelectors.selectValidationErrors)
+    );
   }
 
   onSubmit(): void {
@@ -48,6 +49,6 @@ export class RegisterComponent implements OnInit {
     const request: RegisterRequestInterface = {
       user: this.form.value,
     };
-    this.store.dispatch(RegisterActions['[Auth]Register']({ request }));
+    this.store.dispatch(RegisterActions.registerStart({ request }));
   }
 }
