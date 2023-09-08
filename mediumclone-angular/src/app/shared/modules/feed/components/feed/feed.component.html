@@ -23,8 +23,9 @@
     <a [routerLink]="['/articles', article.slug]" class="preview-link">
       <h1>{{ article.title }}</h1>
       <p>{{ article.description }}</p>
+
       <span>Read more..</span>
-      <span class="text-danger">HERE LIST OF TAGS</span>
+      <mc-tag-list [tags]="article.tagList"></mc-tag-list>
     </a>
   </div>
   <mc-pagination
