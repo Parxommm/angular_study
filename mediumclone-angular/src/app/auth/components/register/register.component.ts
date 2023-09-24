@@ -31,8 +31,6 @@ export class RegisterComponent implements OnInit {
       email: '',
       password: '',
     });
-
-    console.log(this.form.valid);
   }
 
   initializeValues(): void {
@@ -45,7 +43,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
     const request: RegisterRequestInterface = {
       user: this.form.value,
     };
