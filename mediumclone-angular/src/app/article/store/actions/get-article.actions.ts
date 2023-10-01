@@ -1,0 +1,14 @@
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
+
+import { ArticleInterface } from 'src/app/shared/types/article.interface';
+
+export const GetArticleActions = createActionGroup({
+  source: 'Article',
+  events: {
+    'Get article': props<{ slug: string }>(),
+    'Get article success': props<{
+      article: ArticleInterface;
+    }>(),
+    'Get article failure': emptyProps(),
+  },
+});
