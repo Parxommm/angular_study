@@ -13,7 +13,7 @@ export class ArticleService {
   constructor(private http: HttpClient) {}
 
   getArticle(slug: string): Observable<ArticleInterface> {
-    const fullUrl = `${environment.apiUrl}/article/${slug}`;
+    const fullUrl = `${environment.apiUrl}/articles/${slug}`;
     return this.http
       .get<GetArticleResponseInterface>(fullUrl)
       .pipe(map((response) => response.article));

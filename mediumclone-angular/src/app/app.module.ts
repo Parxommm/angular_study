@@ -17,6 +17,7 @@ import { GlobalFeedModule } from './global-feed/global-feed.module';
 import { YourFeedComponent } from './your-feed/components/your-feed/your-feed.component';
 import { YourFeedModule } from './your-feed/your-feed.module';
 import { TagFeedModule } from './tag-feed/tag-feed.module';
+import { ArticleModule } from './article/article.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { TagFeedModule } from './tag-feed/tag-feed.module';
     TagFeedModule,
     RouterModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
+    ArticleModule,
   ],
   providers: [
     PersistenceService,

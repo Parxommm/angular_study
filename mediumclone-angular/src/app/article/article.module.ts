@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
 import { ArticleComponent } from './components/article/article.component';
@@ -10,6 +10,14 @@ import { ErrorMessageModule } from '../shared/modules/error-message/error-messag
 import { GetArticleEffect } from './store/effects/get-article.effects';
 import { ArticleStateFeature } from './store/reducers/feed-state.reducer';
 import { ArticleService as SharedArticleService } from '../shared/services/article.service';
+import { TagListModule } from '../shared/modules/tag-list/tag-list.module';
+
+const routes: Routes = [
+  {
+    path: 'articles/:slug',
+    component: ArticleComponent,
+  },
+];
 
 @NgModule({
   declarations: [ArticleComponent],
@@ -17,11 +25,12 @@ import { ArticleService as SharedArticleService } from '../shared/services/artic
     CommonModule,
     EffectsModule.forFeature(GetArticleEffect),
     StoreModule.forFeature(ArticleStateFeature),
-    RouterModule,
+    RouterModule.forChild(routes),
     ErrorMessageModule,
     LoadingModule,
+    TagListModule,
   ],
-  exports: [ArticleComponent],
+  exports: [],
   providers: [SharedArticleService],
 })
 export class ArticleModule {}
