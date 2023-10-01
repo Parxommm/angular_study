@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit {
       email: '',
       password: '',
     });
-
-    console.log(this.form.valid);
   }
 
   initializeValues(): void {
@@ -44,7 +42,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
     const request: LoginRequestInterface = {
       user: this.form.value,
     };
