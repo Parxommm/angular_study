@@ -7,6 +7,7 @@ import { GetArticleActions } from '../../store/actions/get-article.actions';
 import { ArticleInterface } from 'src/app/shared/types/article.interface';
 import { articleStateSelectors } from '../../store/selectors/article.selectors';
 import { authStateSelectors } from 'src/app/auth/store/selectors/auth-feature.selectors';
+import { DeleteArticleActions } from '../../store/actions/delete-article.actions';
 
 @Component({
   selector: 'mc-article',
@@ -60,5 +61,11 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.articleSubscription.unsubscribe();
+  }
+
+  deleteArticle(): void {
+    this.store.dispatch(
+      DeleteArticleActions.deleteArticle({ slug: this.slug })
+    );
   }
 }
