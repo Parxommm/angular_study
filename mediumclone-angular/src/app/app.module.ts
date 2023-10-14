@@ -14,9 +14,11 @@ import { TopBarModule } from './shared/modules/top-bar/top-bar.module';
 import { PersistenceService } from './shared/services/persistence.service';
 import { AuthInterceptor } from './shared/services/auth-interceptor.service';
 import { GlobalFeedModule } from './global-feed/global-feed.module';
-import { YourFeedComponent } from './your-feed/components/your-feed/your-feed.component';
 import { YourFeedModule } from './your-feed/your-feed.module';
 import { TagFeedModule } from './tag-feed/tag-feed.module';
+import { ArticleModule } from './article/article.module';
+import { CreateArticleModule } from './create-article/create-article.module';
+import { EditArticleModule } from './edit-article/edit-article.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +36,9 @@ import { TagFeedModule } from './tag-feed/tag-feed.module';
     TagFeedModule,
     RouterModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
+    CreateArticleModule,
+    ArticleModule,
+    EditArticleModule,
   ],
   providers: [
     PersistenceService,
