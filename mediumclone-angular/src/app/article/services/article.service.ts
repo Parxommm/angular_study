@@ -10,7 +10,7 @@ export class ArticleService {
   constructor(private http: HttpClient) {}
 
   deleteArticle(slug: string): Observable<{}> {
-    const url = `${environment}/articles/${slug}`;
+    const url = `${environment.apiUrl}/articles/${slug}`;
 
     return this.http.delete<{}>(url);
   }
