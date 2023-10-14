@@ -1,4 +1,4 @@
-import { ArticleStateFeature } from '../reducers/feed-state.reducer';
+import { ArticleStateFeature } from '../reducers/article-state.reducer';
 
 const { selectArticleState, selectIsLoading, selectError, selectData } =
   ArticleStateFeature;

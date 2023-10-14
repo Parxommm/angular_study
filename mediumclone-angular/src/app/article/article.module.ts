@@ -8,7 +8,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { LoadingModule } from '../shared/modules/banner/loading/loading.module';
 import { ErrorMessageModule } from '../shared/modules/error-message/error-message.module';
 import { GetArticleEffect } from './store/effects/get-article.effects';
-import { ArticleStateFeature } from './store/reducers/feed-state.reducer';
+import { ArticleStateFeature } from './store/reducers/article-state.reducer';
 import { ArticleService as SharedArticleService } from '../shared/services/article.service';
 import { TagListModule } from '../shared/modules/tag-list/tag-list.module';
 import { ArticleService } from './services/article.service';
