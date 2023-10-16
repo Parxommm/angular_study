@@ -3,6 +3,7 @@ import { AuthStateInterface } from '../../types/auth-state.interface';
 import { RegisterActions } from '../actions/register.actions';
 import { LoginActions } from '../actions/login.actions';
 import { GetCurrentUserActions } from '../actions/get-current-user.actions';
+import { UpdateCurrentUserActions } from '../actions/update-current-user.actions';
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -92,6 +93,15 @@ export const authStateFeature = createFeature({
         isLoading: false,
         isLoggedIn: false,
         currentUser: null,
+      })
+    ),
+
+    // update current user
+    on(
+      UpdateCurrentUserActions.updateCurrentUserSuccess,
+      (state, action): AuthStateInterface => ({
+        ...state,
+        currentUser: action.currentUser,
       })
     )
   ),
