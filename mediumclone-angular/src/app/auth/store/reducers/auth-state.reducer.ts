@@ -4,6 +4,7 @@ import { RegisterActions } from '../actions/register.actions';
 import { LoginActions } from '../actions/login.actions';
 import { GetCurrentUserActions } from '../actions/get-current-user.actions';
 import { UpdateCurrentUserActions } from '../actions/update-current-user.actions';
+import { logoutAction } from '../actions/sync.actions';
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -102,6 +103,15 @@ export const authStateFeature = createFeature({
       (state, action): AuthStateInterface => ({
         ...state,
         currentUser: action.currentUser,
+      })
+    ),
+
+    // LOGOUT
+    on(
+      logoutAction,
+      (state): AuthStateInterface => ({
+        ...state,
+        isLoggedIn: false,
       })
     )
   ),
