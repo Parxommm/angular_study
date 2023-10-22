@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AddToFavoritesActions } from '../../store/actions/add-to-favorites.actions';
 
 @Component({
   selector: 'mc-add-to-favorites',
@@ -6,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./add-to-favorites.component.scss'],
 })
 export class AddToFavoritesComponent implements OnInit {
+  constructor(private store: Store) {}
+
   @Input('isFavorited') isFavoritedProps: boolean;
   @Input('articleSlug') articleSlugProps: string;
   @Input('favoritesCount') favoritesCountProps: number;
@@ -19,6 +23,12 @@ export class AddToFavoritesComponent implements OnInit {
   }
 
   handleLike(): void {
+    this.store.dispatch(
+      AddToFavoritesActions.toggleLike({
+        isFavorited: this.isFavorited,
+        slug: this.articleSlugProps,
+      })
+    );
     if (this.isFavorited) {
       this.favoritesCount--;
     } else {
