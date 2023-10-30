@@ -12,7 +12,7 @@ const initialState: EditArticleStateInterface = {
 };
 
 export const editArticleStateFeature = createFeature({
-  name: 'Edit article',
+  name: 'edit article',
   reducer: createReducer(
     initialState,
     on(
